@@ -1,27 +1,33 @@
 public class TicTacToeBoard {
 
-    
-    public static int[] convertSlotToIndex(int slot) {
+    public static boolean isValidMove(char[][] board, int row, int col) {
 
-        
-        int index = slot - 1;
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
+        }
 
-        
-        int row = index / 3;
-        int col = index % 3;
+        if (board[row][col] != '-') {
+            return false;
+        }
 
-        
-        return new int[]{row, col};
+        return true;
     }
 
     public static void main(String[] args) {
 
-        int slot = 5; 
+        char[][] board = {
+            {'-', '-', '-'},
+            {'-', 'X', '-'},
+            {'-', '-', '-'}
+        };
 
-        int[] position = convertSlotToIndex(slot);
+        int row = 1;
+        int col = 1;
 
-        System.out.println("Slot: " + slot);
-        System.out.println("Row: " + position[0]);
-        System.out.println("Column: " + position[1]);
+        if (isValidMove(board, row, col)) {
+            System.out.println("Move is valid");
+        } else {
+            System.out.println("Invalid move");
+        }
     }
 }
