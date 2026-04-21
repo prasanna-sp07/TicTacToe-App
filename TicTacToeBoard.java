@@ -1,33 +1,29 @@
 public class TicTacToeBoard {
 
-    public static boolean isValidMove(char[][] board, int row, int col) {
+    
+    public static void displayBoard() {
 
-        if (row < 0 || row > 2 || col < 0 || col > 2) {
-            return false;
+        
+        char[][] board = new char[3][3];
+
+        
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = '-';
+            }
         }
 
-        if (board[row][col] != '-') {
-            return false;
+        
+        System.out.println("Tic-Tac-Toe Board:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
         }
-
-        return true;
     }
 
     public static void main(String[] args) {
-
-        char[][] board = {
-            {'-', '-', '-'},
-            {'-', 'X', '-'},
-            {'-', '-', '-'}
-        };
-
-        int row = 1;
-        int col = 1;
-
-        if (isValidMove(board, row, col)) {
-            System.out.println("Move is valid");
-        } else {
-            System.out.println("Invalid move");
-        }
+        displayBoard();
     }
 }
